@@ -1,0 +1,7 @@
+{
+  "name": "restaurant-catalog",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
