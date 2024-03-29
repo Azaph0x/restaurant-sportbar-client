@@ -1,0 +1,22 @@
+ion-content {
+  &::part(scroll) {
+    padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+  }
+  --background: var(--color-bg);
+
+  .items {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+
+    ion-card {
+      width: 40vw;
+      height: 80px;
+    }
+  }
+}

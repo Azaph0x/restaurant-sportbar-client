@@ -1,0 +1,27 @@
+<ion-content>
+  <ng-container *ngIf="mesaInUse">
+    <h2>Olá, {{  mesaInUse.nome }}</h2>
+  </ng-container>
+
+  <ng-container *ngIf="(produtos$ | async) as produtos">
+    <div class="items">
+      <div class="card" *ngFor="let produto of produtos">
+        <header>
+          <h4>{{ produto.nome }}</h4>
+          <p>R$ {{ produto.valor }} | {{ produto.tempo }}m</p>
+        </header>
+        <p class="description"></p>
+      </div>
+      <ion-card *ngFor="let produto of produtos">
+
+        <ion-card-content>
+          {{ produto.descricao }}
+        </ion-card-content>
+
+        <ion-button fill="clear">Adicionar</ion-button>
+      </ion-card>
+    </div>
+  </ng-container>
+
+
+</ion-content>

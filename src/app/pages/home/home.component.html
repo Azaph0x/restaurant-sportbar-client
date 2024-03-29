@@ -1,0 +1,14 @@
+<ion-content>
+
+  <h1>Olá, Bem-vindo</h1>
+
+  <ng-container *ngIf="mesas$ | async as mesas">
+    <div class="items">
+      <div class="item" *ngFor="let mesa of mesas" [class.ocupada]="!mesa.ativa" (click)="selectionarMesa(mesa)">
+        <h2>{{ mesa.nome }}</h2>
+        <p>{{ mesa.ativa ? 'Livre' : 'Ocupada' }}</p>
+      </div>
+    </div>
+  </ng-container>
+
+</ion-content>
