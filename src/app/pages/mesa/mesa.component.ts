@@ -14,6 +14,8 @@ export class MesaComponent  implements OnInit, OnDestroy {
 
   mesaInUse!: Mesa;
 
+  pedidos: Produto[] = [];
+
   constructor(
     private mesaService: MesaService,
     private navController: NavController,
@@ -35,6 +37,25 @@ export class MesaComponent  implements OnInit, OnDestroy {
       })
     ).subscribe();
     this.produtos$ = this.produtoService.getProdutos().pipe(takeUntil(this.subject));
+  }
+
+  addValue(pedido: Produto) {
+    this.pedidos.push(pedido);
+  }
+
+  getTotal() {
+    return this.pedidos.map(p => p.valor).reduce((total, atual) => total + atual, 0)
+  }
+
+  remove(product: Produto) {
+    const index = this.pedidos.indexOf(product);
+    if (index !== -1) {
+      this.pedidos.splice(index, 1);
+    }
+  }
+
+  isProduct(product: Produto): boolean {
+    return this.pedidos.find(p => p.id == product.id) ? true : false;
   }
 
   ngOnDestroy(): void {

@@ -1,6 +1,13 @@
+<ion-header>
+  <ion-back-button defaultHref="home" style="width: 20%;"></ion-back-button>
+  <h2 style="width: 60%;">Mesa {{ mesaInUse ? mesaInUse.id : '' }}</h2>
+  <div style="width: 20%;">
+    <!-- SIDEBAR -->
+  </div>
+</ion-header>
 <ion-content>
   <ng-container *ngIf="mesaInUse">
-    <h2>Olá, {{  mesaInUse.nome }}</h2>
+    <h2 style="font-weight: 700; text-align: center; color: #7e7272;">Cardápio</h2>
   </ng-container>
 
   <ng-container *ngIf="(produtos$ | async) as produtos">
@@ -8,20 +15,26 @@
       <div class="card" *ngFor="let produto of produtos">
         <header>
           <h4>{{ produto.nome }}</h4>
-          <p>R$ {{ produto.valor }} | {{ produto.tempo }}m</p>
+          <p>{{ produto.valor | currency: 'BRL' }} | {{ produto.tempo }}m</p>
         </header>
-        <p class="description"></p>
+        <div class="content">
+          <p class="description">
+            {{ produto.descricao }}
+          </p>
+        </div>
+        <div class="actions">
+          <ion-button (click)="addValue(produto)">Adicionar</ion-button>
+          <ion-button color="danger" *ngIf="isProduct(produto)" (click)="remove(produto)">Remover</ion-button>
+        </div>
       </div>
-      <ion-card *ngFor="let produto of produtos">
-
-        <ion-card-content>
-          {{ produto.descricao }}
-        </ion-card-content>
-
-        <ion-button fill="clear">Adicionar</ion-button>
-      </ion-card>
     </div>
   </ng-container>
-
-
 </ion-content>
+<ion-footer collapse="fade">
+  <h2>Comanda</h2>
+  <div class="content">
+    <p>Total: <span>{{ getTotal() | currency: 'BRL' }}</span></p>
+    <p>items: <span>{{ pedidos.length }}x</span></p>
+    <ion-button color="success">Prosseguir</ion-button>
+  </div>
+</ion-footer>
