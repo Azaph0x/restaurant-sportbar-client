@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PagesPageRoutingModule } from './pages-routing.module';
 import { HomeComponent } from './home/home.component';
 import { MesaComponent } from './mesa/mesa.component';
+import { ResumoComponent } from './resumo/resumo.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { MesaComponent } from './mesa/mesa.component';
   ],
   declarations: [
     HomeComponent,
-    MesaComponent
+    MesaComponent,
+    ResumoComponent
   ]
 })
 export class PagesPageModule {}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
+import { ClientDataModalComponent } from 'src/app/components/client-data-modal/client-data-modal.component';
 import { mesaStatus } from 'src/app/models/mesa';
 import { MesaService } from 'src/app/services/mesa/mesa.service';
 
@@ -15,17 +16,34 @@ export class HomeComponent  implements OnInit {
 
   constructor(
     private mesaService: MesaService,
-    private navController: NavController
+    private navController: NavController,
+    private modalController: ModalController
   ) { }
 
   ngOnInit() {
     this.mesas$ = this.mesaService.getMesas();
   }
 
-  selectionarMesa(mesa: mesaStatus) {
-    if(!mesa.ativa) return;
-    this.mesaService.useMesa(mesa);
-    this.navController.navigateForward(['mesa']);
+  async selectionarMesa(mesa: mesaStatus) {
+    // if(!mesa.ativa) return;
+    this.openConfigClient(mesa)
   }
+
+  async openConfigClient(mesa: mesaStatus) {
+    const modal = await this.modalController.create({
+       component: ClientDataModalComponent,
+       mode: 'ios',
+       initialBreakpoint: 0.8
+     })
+     modal.present()
+     await modal.onDidDismiss().then((r) => {
+       console.log(r)
+       if(r.data) {
+         this.mesaService.useMesa(mesa);
+
+         this.navController.navigateForward(['mesa']);
+       }
+     })
+   }
 
 }
