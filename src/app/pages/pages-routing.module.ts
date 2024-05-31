@@ -10,7 +10,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'mesa',
+    path: 'mesa/:id',
     component: MesaComponent
   },
   {

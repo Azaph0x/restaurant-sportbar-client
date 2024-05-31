@@ -2,14 +2,17 @@
 
   <h1>Olá, Bem-vindo</h1>
 
-  <ng-container *ngIf="mesas$ | async as mesas">
-    <div class="items">
-      <div class="item" *ngFor="let mesa of mesas" (click)="selectionarMesa(mesa)">
-        <h2>{{ mesa.nome }}</h2>
-        <!-- <p>{{ mesa.ativa ? 'Livre' : 'Ocupada' }}</p> -->
+  <ng-container *ngIf="false">
+    <ng-container *ngIf="mesas$ | async as mesas">
+      <div class="items">
+        <div class="item" *ngFor="let mesa of mesas" (click)="selectionarMesa(mesa)">
+          <h2>{{ mesa.nome }}</h2>
+          <!-- <p>{{ mesa.ativa ? 'Livre' : 'Ocupada' }}</p> -->
+        </div>
       </div>
-    </div>
+    </ng-container>
   </ng-container>
+
 
   <div class="redes">
     <h2>Redes Sociais</h2>

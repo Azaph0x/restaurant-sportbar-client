@@ -1,12 +1,12 @@
 <ion-header>
   <ion-back-button defaultHref="home" style="width: 20%;"></ion-back-button>
-  <h2 style="width: 60%;">Mesa {{ mesaInUse ? mesaInUse.id : '' }}</h2>
+  <h2 style="width: 60%;">Mesa {{ id }}</h2>
   <div style="width: 20%;">
     <!-- SIDEBAR -->
   </div>
 </ion-header>
 <ion-content>
-  <ng-container *ngIf="mesaInUse">
+  <ng-container *ngIf="id">
     <h2 style="font-weight: 700; text-align: center; color: #7e7272;">Cardápio</h2>
   </ng-container>
 
