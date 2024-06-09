@@ -21,29 +21,29 @@ export class HomeComponent  implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.mesas$ = this.mesaService.getMesas();
+    // this.mesas$ = this.mesaService.getMesas();
   }
 
-  async selectionarMesa(mesa: mesaStatus) {
-    // if(!mesa.ativa) return;
-    this.openConfigClient(mesa)
-  }
+  // async selectionarMesa(mesa: mesaStatus) {
+  //   // if(!mesa.ativa) return;
+  //   this.openConfigClient(mesa)
+  // }
 
-  async openConfigClient(mesa: mesaStatus) {
-    const modal = await this.modalController.create({
-       component: ClientDataModalComponent,
-       mode: 'ios',
-       initialBreakpoint: 0.8
-     })
-     modal.present()
-     await modal.onDidDismiss().then((r) => {
-       console.log(r)
-       if(r.data) {
-         this.mesaService.useMesa(mesa);
+  // async openConfigClient(mesa: mesaStatus) {
+  //   const modal = await this.modalController.create({
+  //      component: ClientDataModalComponent,
+  //      mode: 'ios',
+  //      initialBreakpoint: 0.8
+  //    })
+  //    modal.present()
+  //    await modal.onDidDismiss().then((r) => {
+  //      console.log(r)
+  //      if(r.data) {
+  //        this.mesaService.useMesa(mesa);
 
-         this.navController.navigateForward(['mesa']);
-       }
-     })
-   }
+  //        this.navController.navigateForward(['mesa']);
+  //      }
+  //    })
+  //  }
 
 }

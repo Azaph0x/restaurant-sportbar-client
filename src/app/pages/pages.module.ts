@@ -8,6 +8,8 @@ import { PagesPageRoutingModule } from './pages-routing.module';
 import { HomeComponent } from './home/home.component';
 import { MesaComponent } from './mesa/mesa.component';
 import { ResumoComponent } from './resumo/resumo.component';
+import { HeaderMainComponent } from '../components/header-main/header-main.component';
+import { ComponentsModule } from '../components/components.module';
 
 
 @NgModule({
@@ -15,7 +17,8 @@ import { ResumoComponent } from './resumo/resumo.component';
     CommonModule,
     FormsModule,
     IonicModule,
-    PagesPageRoutingModule
+    PagesPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [
     HomeComponent,

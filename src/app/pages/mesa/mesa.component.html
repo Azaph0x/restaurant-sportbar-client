@@ -1,13 +1,10 @@
-<ion-header>
-  <ion-back-button defaultHref="home" style="width: 20%;"></ion-back-button>
-  <h2 style="width: 60%;">Mesa {{ id }}</h2>
-  <div style="width: 20%;">
-    <!-- SIDEBAR -->
-  </div>
-</ion-header>
+<header-main
+  [haveBack]="false"
+  [title]="'Mesa ' + id"
+></header-main>
 <ion-content>
   <ng-container *ngIf="id">
-    <h2 style="font-weight: 700; text-align: center; color: #7e7272;">Cardápio</h2>
+    <h2 style="font-weight: 700; text-align: center; color: var(--color-title);">Cardápio</h2>
   </ng-container>
 
   <ng-container *ngIf="(produtos$ | async) as produtos">
@@ -23,8 +20,8 @@
           </p>
         </div>
         <div class="actions">
-          <ion-button (click)="addValue(produto)">Adicionar</ion-button>
-          <ion-button color="danger" *ngIf="isProduct(produto)" (click)="remove(produto)">Remover</ion-button>
+          <ion-button (click)="addValue(produto)" class="geral">Adicionar</ion-button>
+          <ion-button class="geral-remove" *ngIf="isProduct(produto)" (click)="remove(produto)">Remover</ion-button>
         </div>
       </div>
     </div>
@@ -33,8 +30,8 @@
 <ion-footer collapse="fade">
   <h2>Comanda</h2>
   <div class="content">
-    <p>Total: <span>{{ getTotal() | currency: 'BRL' }}</span></p>
-    <p>items: <span>{{ pedidos.length }}x</span></p>
-    <ion-button color="success">Prosseguir</ion-button>
+    <p>Total: <strong>{{ getTotal() | currency: 'BRL' }}</strong></p>
+    <p>items: <strong>{{ pedidos.length }}x</strong></p>
+    <ion-button class="geral" (click)="finish()">Prosseguir</ion-button>
   </div>
 </ion-footer>

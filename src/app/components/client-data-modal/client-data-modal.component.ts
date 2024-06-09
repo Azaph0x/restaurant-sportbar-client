@@ -19,6 +19,7 @@ export class ClientDataModalComponent  implements OnInit {
     this.form = new FormGroup({
       nome: new FormControl('', [Validators.required]),
       pessoas: new FormControl('', [Validators.required, Validators.max(20), Validators.min(1)]),
+      cpf: new FormControl(''),
     })
   }
 

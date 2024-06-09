@@ -33,3 +33,41 @@
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
 }
+
+
+%button-base {
+  --padding-start: 18px;
+  --padding-end: 18px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+}
+
+ion-button.geral {
+  @extend %button-base;
+  --background: var(--button-bg);
+  color: var(--button-text);
+}
+
+ion-button.geral-remove {
+  @extend %button-base;
+  --background: rgb(222, 37, 37);
+  color: var(--button-text);
+}
+
+input.custom {
+  width: 100%;
+  outline: none;
+  background-color: var(--input-bg);
+
+  color: var(--input-color);
+  border: 1px solid var(--input-border);
+  border-radius: 10px;
+  padding: 8px 12px;
+
+  &::placeholder {
+    opacity: 0.9;
+    color: var(--input-placeholder);
+  }
+
+
+}

@@ -7,18 +7,22 @@ export abstract class MesaService {
 
   constructor(private mesaStore: MesaStore) { }
 
-  public abstract getMesas(): Observable<mesaStatus[]>;
-
   getMesa(): Observable<Mesa | null> {
     return this.mesaStore.getMesa();
   }
 
-  public useMesa(mesa: mesaStatus) {
+  public useMesa(mesa: Mesa) {
     this.mesaStore.updateMesa({
        id: mesa.id,
        nome: mesa.nome,
         ativa: false,
-        produtos: []
+      produtos: []
     });
+  }
+
+  public updateMesa(changes: Partial<Mesa>) {
+    this.mesaStore.updateMesa({
+      ...changes
+    })
   }
 }

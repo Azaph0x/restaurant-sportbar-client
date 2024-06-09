@@ -39,10 +39,11 @@ export class MesaComponent  implements OnInit, OnDestroy {
       this.navController.navigateForward(['']);
       return;
     }
-;    this.produtos$ = this.produtoService.getProdutos().pipe(takeUntil(this.subject));
+    this.produtos$ = this.produtoService.getProdutos().pipe(takeUntil(this.subject));
+    this.openConfigClient()
   }
 
-  async openConfigClient(mesa: mesaStatus) {
+  async openConfigClient() {
     const modal = await this.modalController.create({
        component: ClientDataModalComponent,
        mode: 'ios',
@@ -54,7 +55,9 @@ export class MesaComponent  implements OnInit, OnDestroy {
           this.mesaService.useMesa({
             id: this.id,
             ativa: true,
-            nome: r.data.nome
+            nome: r.data.nome,
+            pessoas: r.data.pessoas,
+            produtos: []
           })
 
           this.navController.navigateForward(['mesa']);
@@ -84,6 +87,13 @@ export class MesaComponent  implements OnInit, OnDestroy {
   ngOnDestroy(): void {
       this.subject.next(0);
       this.subject.complete();
+  }
+
+  finish() {
+    this.navController.navigateRoot(['resumo'])
+    this.mesaService.updateMesa({
+      produtos: this.pedidos
+    })
   }
 
 }

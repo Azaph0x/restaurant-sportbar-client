@@ -5,12 +5,27 @@
 :root {
 
   --color-primary: #f30732;
-  --color-secondary: #333;
-  --color-bg: rgb(255, 253, 251);
+  --color-secondary: #f0f0f0;
+  --color-bg: #1f1f1f;
 
   --color-text: #fff;
-  --color-title: #f30732;
+  --color-title: #f0f0f0;
   --color-subtitle: #fff;
+
+  --card-title: #1f1f1f;
+  --card-border: #fca42a;
+
+  --button-bg: #fca42a;
+  --button-text: #f0f0f0;
+
+  --footer-bg: #1f1f1f;
+  --footer-text: #f0f0f0;
+
+  --input-bg: transparent;
+  --input-border: #333;
+  --input-color: #f0f0f0;
+  --input-placeholder: rgba(var(--input-color), .7);
+
 
 
   /** primary **/

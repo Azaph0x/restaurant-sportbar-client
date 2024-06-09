@@ -11,12 +11,15 @@ export type Produto = {
   ativo: boolean;
   tempo: number;
   descricao: string;
+
+  qnt?: number;
 }
 
 export type Mesa = {
   nome: string;
   id: number;
   ativa: boolean;
+  pessoas: number;
 
   produtos: Produto[];
 }

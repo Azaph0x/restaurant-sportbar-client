@@ -1,9 +1,10 @@
 <ion-content>
   <h2><b>Olá,</b> Vamos precisar de algumas informações</h2>
-  <ng-container [formGroup]="form">
-    <input type="text" placeholder="Seu nome" formControlName="nome">
-    <input type="number" placeholder="Numero de pessoas" [inputMode]="'number'" formControlName="pessoas">
-  </ng-container>
+  <div class="form-group" [formGroup]="form">
+    <input class="custom" type="text" placeholder="Seu nome" formControlName="nome">
+    <input class="custom" type="number" placeholder="Numero de pessoas" [inputMode]="'number'" formControlName="pessoas">
+    <input class="custom" type="text" placeholder="CPF (Opcional)" formControlName="cpf" [mask]="'000.000.00-00'">
+    <ion-button (click)="close()" class="geral" [disabled]="form.invalid">Continuar</ion-button>
+  </div>
 
-  <button (click)="close()" [disabled]="form.invalid">Continuar</button>
 </ion-content>
