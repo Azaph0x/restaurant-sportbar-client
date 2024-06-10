@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'https://restaurant-sportbar-server.onrender.com/api/',
+  api: 'https://restaurant-sportbar-server.onrender.com/api',
   // api: '/proxy/service'
 };
 
