@@ -47,20 +47,21 @@ export class MesaComponent  implements OnInit, OnDestroy {
     const modal = await this.modalController.create({
        component: ClientDataModalComponent,
        mode: 'ios',
-       initialBreakpoint: 0.8
+       initialBreakpoint: 0.8,
+      backdropDismiss: false
      })
      modal.present()
      await modal.onDidDismiss().then((r) => {
        if(r.data) {
+        const name = `${r.data.nome} ${r.data.cpf ? r.data.cpf : '-'}`
           this.mesaService.useMesa({
             id: this.id,
             ativa: true,
-            nome: r.data.nome,
-            pessoas: r.data.pessoas,
+            nome: name,
+            pessoas: r.data.pessoas ? r.data.pessoas : 1,
             produtos: []
           })
-
-          this.navController.navigateForward(['mesa']);
+          // this.navController.navigateForward(['mesa']);
        }
      })
    }

@@ -19,6 +19,6 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
   ],
   providers: [
     provideNgxMask()
-  ]
+  ],
 })
 export class ComponentsModule { }

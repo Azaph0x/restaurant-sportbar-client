@@ -36,21 +36,18 @@
       </ion-col>
     </ion-row>
 
-    <div>
-      <p>N° Mesa: {{ mesa.id }}</p>
-      <p>N° Pessoas: {{ mesa.pessoas }}</p>
+    <div class="info">
+      <p>N° Mesa: <strong>{{ mesa.id }}</strong></p>
+      <p>N° Pessoas: <strong>{{ mesa.pessoas }}</strong></p>
     </div>
-
-
-
   </ng-container>
 </ion-content>
 <ion-footer>
   <div class="actions">
-    <ion-button class="geral">
+    <ion-button class="geral" (click)="finish()">
       Fazer Pedido
     </ion-button>
-    <ion-button class="geral">
+    <ion-button class="geral" (click)="back()">
       Alterar Pedido
     </ion-button>
   </div>

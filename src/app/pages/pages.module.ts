@@ -10,6 +10,7 @@ import { MesaComponent } from './mesa/mesa.component';
 import { ResumoComponent } from './resumo/resumo.component';
 import { HeaderMainComponent } from '../components/header-main/header-main.component';
 import { ComponentsModule } from '../components/components.module';
+import { SucessoComponent } from './sucesso/sucesso.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ComponentsModule } from '../components/components.module';
   declarations: [
     HomeComponent,
     MesaComponent,
-    ResumoComponent
+    ResumoComponent,
+    SucessoComponent
   ]
 })
 export class PagesPageModule {}

@@ -13,9 +13,10 @@ export abstract class MesaService {
 
   public useMesa(mesa: Mesa) {
     this.mesaStore.updateMesa({
-       id: mesa.id,
-       nome: mesa.nome,
-        ativa: false,
+      id: mesa.id,
+      nome: mesa.nome,
+      pessoas: mesa.pessoas,
+      ativa: true,
       produtos: []
     });
   }

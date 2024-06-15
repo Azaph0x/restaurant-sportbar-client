@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { Observable, Subject, takeUntil, tap } from 'rxjs';
 import { Mesa, Produto } from 'src/app/models/mesa';
 import { MesaService } from 'src/app/services/mesa/mesa.service';
+import { PedidoService } from 'src/app/services/pedido/pedido.service';
 
 @Component({
   selector: 'app-resumo',
@@ -11,7 +13,9 @@ import { MesaService } from 'src/app/services/mesa/mesa.service';
 export class ResumoComponent  implements OnInit, OnDestroy {
 
   constructor(
-    private mesaService: MesaService
+    private mesaService: MesaService,
+    private navCtrl: NavController,
+    private pedidoService: PedidoService
   ) { }
 
   mesa!: Mesa | null;
@@ -23,9 +27,9 @@ export class ResumoComponent  implements OnInit, OnDestroy {
     this.mesaService.getMesa().pipe(
       takeUntil(this.subject),
       tap((r) => {
-        this.mesa = r;
         if(r) {
-            console.log(this.groupItems(r.produtos))
+            this.mesa = r;
+            console.log(r)
             this.mesa?.produtos.forEach(i => {
             this.total = this.total + i.valor;
           })
@@ -62,6 +66,28 @@ export class ResumoComponent  implements OnInit, OnDestroy {
 
       return acc;
     }, [])
+  }
+
+  back() {
+    this.navCtrl.back()
+  }
+
+  finish() {
+    if(this.mesa) {
+      this.pedidoService.createOrder({
+        id: this.mesa.id,
+        produtos: this.groupItems(this.mesa.produtos),
+        pessoas: this.mesa.pessoas,
+        ativa: true,
+        nome: this.mesa.nome,
+      }).pipe(
+        tap((r) => {
+          this.navCtrl.navigateForward(['sucesso'])
+        })
+      )
+      .subscribe()
+    }
+
   }
 
 }

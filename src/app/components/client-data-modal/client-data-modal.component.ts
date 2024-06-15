@@ -24,6 +24,7 @@ export class ClientDataModalComponent  implements OnInit {
   }
 
   close() {
+    if(this.form.invalid) return;
     this.modalController.dismiss({
       ...this.form.value
     });
