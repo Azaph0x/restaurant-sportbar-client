@@ -29,7 +29,5 @@ O sistema de processamento de pedidos do SportBar funciona da seguinte maneira:
 - Front-end: Desenvolvido com Angular e Ionic para uma interface intuitiva e responsiva.
 - Back-end: Utiliza Django para a criação de APIs RESTful que suportam as funcionalidades do sistema.
 - Banco de Dados: Gerencia os dados dos pedidos e do cardápio de forma eficiente.(POSTGRES)
-- Integrações: Possui integração com sistemas de pagamento para facilitar o processo de checkout.
-
 
 **Por questões de segurança, o backend e o sistema administrativo estão privados, pois estão sendo utilizados pelo estabelecimento no momento. Esta versão é apresentada apenas para demonstração na faculdade e está aberta ao público e aos alunos, conforme combinado com os professores e o estabelecimento. As novas atualizações estão sendo feitas em um repositório privado, que não podemos deixar aberto.**
